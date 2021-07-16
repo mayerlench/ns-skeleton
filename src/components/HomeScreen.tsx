@@ -4,6 +4,7 @@ import { Dialogs } from '@nativescript/core';
 import { FrameNavigationProp } from "react-nativescript-navigation";
 import { StyleSheet } from "react-nativescript";
 import { MainStackParamList } from "./NavigationParamList";
+import { Square, Circle, Line } from './skeleton'
 
 type HomeScreenProps = {
     route: RouteProp<MainStackParamList, "Home">,
@@ -13,18 +14,41 @@ type HomeScreenProps = {
 export function HomeScreen({ navigation }: HomeScreenProps) {
     return (
         <flexboxLayout style={styles.container}>
-            <label
-                className="fas"
-                style={styles.text}
-            >
-                &#xf135; Hello World!
-            </label>
-            <button
-                style={styles.button}
-                onTap={() => Dialogs.alert("Tapped!")}
-            >
-                Tap me for an alert
-            </button>
+            <gridLayout columns="auto, auto" rows="auto">
+                <Circle animate row={0} col={0} style={{ marginRight: 15 }} />
+                <stackLayout orientation="vertical" width="80%" row={0} col={1}>
+                    <Line horizontalAlignment="left" width="60%" animate />
+                    <Line horizontalAlignment="left" width="50%" animate />
+                    <Line horizontalAlignment="left" width="20%" animate />
+                </stackLayout>
+            </gridLayout>
+
+            <gridLayout columns="auto, auto" rows="auto" style={styles.templateContainer}>
+                <Circle animate row={0} col={0} style={{ marginRight: 15 }} />
+                <stackLayout orientation="vertical" width="80%" row={0} col={1}>
+                    <Line horizontalAlignment="left" width="60%" />
+                    <Line horizontalAlignment="left" width="50%" />
+                    <Line horizontalAlignment="left" width="20%" />
+                </stackLayout>
+            </gridLayout>
+
+            <gridLayout columns="auto, auto" rows="auto" style={styles.templateContainer}>
+                <Square animate row={0} col={0} style={{ marginRight: 15 }} />
+                <stackLayout orientation="vertical" width="80%" row={0} col={1}>
+                    <Line horizontalAlignment="left" width="60%" />
+                    <Line horizontalAlignment="left" width="50%" />
+                    <Line horizontalAlignment="left" width="20%" />
+                </stackLayout>
+            </gridLayout>
+
+            <gridLayout columns="auto, auto" rows="auto" style={styles.templateContainer}>
+                <Square animate row={0} col={0} style={{ marginRight: 15 }} />
+                <stackLayout orientation="vertical" width="80%" row={0} col={1}>
+                    <Line horizontalAlignment="left" width="60%" />
+                    <Line horizontalAlignment="left" width="50%" />
+                    <Line horizontalAlignment="left" width="20%" />
+                </stackLayout>
+            </gridLayout>
             <button
                 style={styles.button}
                 onTap={() => navigation.navigate('Secondary')}
@@ -50,4 +74,7 @@ const styles = StyleSheet.create({
         fontSize: 24,
         color: "#2e6ddf",
     },
+    templateContainer: {
+        marginTop: 50
+    }
 });
